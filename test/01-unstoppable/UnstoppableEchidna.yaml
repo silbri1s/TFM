@@ -1,0 +1,5 @@
+# Allow fuzzer to use public/external functions from all contracts
+allContracts: true
+
+# Instruct foundry to compile tests
+cryticArgs: ["--foundry-compile-all"]
