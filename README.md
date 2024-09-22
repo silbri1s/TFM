@@ -69,4 +69,28 @@ Una vez realizado el despliegue ejecutamos Mythril:
 $ myth analyze -a <dirección smart contract> --rpc 127.0.0.1:8545
 ```
 
-Donde -a <dirección smart contract> especifica la dirección del contrato desplegado a analizar y --rpc 127.0.0.1:8545 especifica la red donde estan desplegados los contratos.
+Donde -a <dirección smart contract> especifica la dirección del contrato desplegado a analizar y --rpc 127.0.0.1:8545 especifica la red donde estan desplegados los contratos. En nuestro caso, utilizaremos la direccion  0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512 que se corresponde con la dirección del contrato desplegado UnstoppableVault
+
+```shell
+$ myth analyze -a 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512 --rpc 127.0.0.1:8545
+```
+
+## Análisis Dinámico
+
+### Echidna
+
+A continuación realizamos el análisis dinámico utilizando la herramienta Echidna. Para ellos vamos a crear varios casos de prueba específicos para cubrir diferentes escenarios de uso del contrato. Dichos casos de prueba se encuentran en /test/01-unstoppable/UnstoppableEchidna.t.sol
+
+Una vez tenemos los escenarios para el testeo creamos el archivo de configuración de echidna UnstoppableEchidna.yaml, necesario para la ejecución, con lo siguientes parámetros:
+```shell
+$
+allContracts: true
+
+cryticArgs: ["--foundry-compile-all"]
+```
+
+Donde el primer parámetro \textbf{allContracts} permite que se utilice las funciones public y external de todos los contratos necesarios que utiliza y  el segundo \textbf{cryticArgs: ["--foundry-compile-all"]} para indicar que utilice fondry para la compilación de los test. Indicar que no es necesario a\ñadir el modo de test a utilizar ya que por defecto es el modo \textbf{property} y se corresponde con los test que hemos implementado, donde estamos especificando propiedades o funciones públicas en el contrato que devolver un valor booleano indicando si la propiedad se cumple o no.
+
+```shell
+$ echidna --config test/01-unstoppable/UnstoppableEchidna.yaml test/01-unstoppable/UnstoppableEchidna.t.sol --contract UnstoppableEchidnaTest
+```
