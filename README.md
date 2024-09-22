@@ -89,7 +89,7 @@ allContracts: true
 cryticArgs: ["--foundry-compile-all"]
 ```
 
-Donde el primer parámetro \textbf{allContracts} permite que se utilice las funciones public y external de todos los contratos necesarios que utiliza y  el segundo \textbf{cryticArgs: ["--foundry-compile-all"]} para indicar que utilice fondry para la compilación de los test. Indicar que no es necesario a\ñadir el modo de test a utilizar ya que por defecto es el modo \textbf{property} y se corresponde con los test que hemos implementado, donde estamos especificando propiedades o funciones públicas en el contrato que devolver un valor booleano indicando si la propiedad se cumple o no.
+Donde el primer parámetro <allContracts> permite que se utilice las funciones public y external de todos los contratos necesarios que utiliza y  el segundo <cryticArgs: "--foundry-compile-all"]> para indicar que utilice fondry para la compilación de los test. Indicar que no es necesario a\ñadir el modo de test a utilizar ya que por defecto es el modo "property" y se corresponde con los test que hemos implementado, donde estamos especificando propiedades o funciones públicas en el contrato que devolver un valor booleano indicando si la propiedad se cumple o no.
 
 ```shell
 $ echidna --config test/01-unstoppable/UnstoppableEchidna.yaml test/01-unstoppable/UnstoppableEchidna.t.sol --contract UnstoppableEchidnaTest
