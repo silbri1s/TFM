@@ -94,3 +94,13 @@ Donde el primer parámetro <allContracts> permite que se utilice las funciones p
 ```shell
 $ echidna --config test/01-unstoppable/UnstoppableEchidna.yaml test/01-unstoppable/UnstoppableEchidna.t.sol --contract UnstoppableEchidnaTest
 ```
+
+## Análisis Manual
+
+Conseguimos superar el challenge propuesto y que el Vault deje de ofrecer préstamos flash si hacemos un transfer al vault. Para ello he creado un test en "forge" donde se realiza dicho exploit, este se encuentra en test/01-unstoppable/Unstoppable.t.sol
+
+Para ejecutarlo el comando es el siguiente: 
+
+```shell
+$ forge test --match-path test/01-unstoppable/Unstoppable.t.sol
+```
